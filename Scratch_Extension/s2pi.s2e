@@ -1,0 +1,54 @@
+{
+    "extensionName": "s2pi",
+    "extensionPort": 5000,
+    "url": "https://github.com/mancusoa74/s2pi",
+    "blockSpecs": [
+        [
+            " ",
+            "Configura Pin Digitale %n come %m.gpio_mode",
+            "config_gpio",
+            "PIN",
+            "Ingresso"
+        ],
+        [
+            " ",
+            "Porta Pin Digitale %n a %m.gpio_state",
+            "set_gpio",
+            "PIN",
+            "Basso"
+        ],
+        [
+            "b",
+            "Pin Digitale %n Alto?",
+            "get_gpio",
+            "PIN"
+        ],
+        [
+            " ",
+            "Collega LED a Pin Digitale %n",
+            "config_led",
+            "PIN"
+        ],
+        [
+            " ",
+            "%m.led_state LED %n",
+            "set_led",
+            "Spegni"
+        ],
+    ],
+    "menus": {
+        "gpio_mode": [
+            "Ingresso",
+            "Uscita",
+        ],
+        "gpio_state": [
+            "Alto",
+            "Basso"
+        ],
+        "led_state": [
+            "Accendi",
+            "Spegni",
+            "Lampeggia"
+        ]
+    }
+}
