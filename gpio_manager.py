@@ -27,8 +27,8 @@ class GpioManager:
 		"""
 		Based on the direction instanciate a specific DigitalDevice obect for the given pin
 		:param pin: the GPIO pin to configure
-        :param direction: the direction of the pin Ingresso/Uscita
-        :return: None
+	        :param direction: the direction of the pin Ingresso/Uscita
+	        :return: None
 		"""
 		if direction == "Uscita":
 			self.gpios[str(pin)] = {'gpio': gpiozero.DigitalOutputDevice(pin, active_high=True, initial_value=False), 'direction': 'OUT'}        
@@ -40,8 +40,8 @@ class GpioManager:
 		"""
 		This function guarantees that only pin which are configured as Output/Uscita can be set to a logical level by the user
 		:param pin: the GPIO pin to configure
-        :param status: the logical level of the pin Alto/Basso
-        :return: None
+       		:param status: the logical level of the pin Alto/Basso
+	        :return: None
 		"""
 		log.debug(self.gpios[str(pin)]['direction'])
 		log.debug(self.gpios[str(pin)])

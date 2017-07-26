@@ -18,7 +18,7 @@ def init(level):
 	"""
 	Initialize the logger
 	:param Level: the initial logging Level
-    :return: None
+        :return: None
 	"""
 	global logger
 

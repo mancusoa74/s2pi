@@ -28,7 +28,7 @@ class LedManager:
 		"""
 		Create a Led object to provide a user a higer abstraction compared to GPIO
 		:param pin: the GPIO pin to configure        
-        :return: None
+                :return: None
 		"""
 		self.leds[str(pin)] = LED(pin)
 		log.info("Configurazione LED %i  corretta" %pin)
@@ -37,8 +37,8 @@ class LedManager:
 		"""
 		This function turn a LED on or off or to blink it
 		:param pin: the LED to turn on/off
-        :param status: Acceso/Spento/Lampeggio
-        :return: None
+	        :param status: Acceso/Spento/Lampeggio
+	        :return: None
 		"""
 		log.debug(self.leds[str(pin)])
 		if status == 'Accendi':
