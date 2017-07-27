@@ -35,7 +35,7 @@ app = Flask(__name__)
 #initialize logging
 log.init(logging.DEBUG)
 
-log.info("Starting s2pi v1.0")
+log.info("Starting s2pi v1.1")
 
 @app.route('/poll')
 def poll():
