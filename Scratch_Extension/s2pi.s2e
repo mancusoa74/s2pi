@@ -35,6 +35,33 @@
             "set_led",
             "Spegni"
         ],
+        [
+            " ",
+            "Collega Motore CC %s a Pin-1 %n e Pin-2 %n",
+            "config_motor",
+            "MOTORE",
+            "PIN",
+            "PIN"
+        ],
+        [
+            "w",
+            "Attiva Motore CC %s per %n secondi in %m.motor_direction",
+            "start_motor_wait",
+            "MOTORE",
+            "0"
+        ],
+        [
+            " ",
+            "Attiva Motore CC %s in %m.motor_direction",
+            "start_motor",
+            "MOTORE",
+        ],
+        [
+            " ",
+            "Ferma Motore CC %s",
+            "stop_motor",
+            "MOTORE",
+        ],
     ],
     "menus": {
         "gpio_mode": [
@@ -49,6 +76,10 @@
             "Accendi",
             "Spegni",
             "Lampeggia"
+        ],
+        "motor_direction": [
+            "Avanti",
+            "Indietro"
         ]
     }
 }

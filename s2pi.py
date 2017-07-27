@@ -17,12 +17,16 @@ import logging
 import log
 from gpio_manager import GpioManager
 from led_manager import LedManager
+from motor_manager import MotorManager
 
 #initialize the GPIO manager
 gpios = GpioManager()
 
 #initialize the LED manager
 leds = LedManager()
+
+#initialize the MOTOR manager
+motors = MotorManager()
 
 
 #initialize Flask application
@@ -50,8 +54,10 @@ def reset_all():
 	log.info("HTTP /reset_all")
 	gpios.reset()
 	leds.reset()
+	motors.reset()
 	log.debug(gpios.gpios)
 	log.debug(leds.leds)
+	log.debug(motors.motors)
 	return 'OK'
 
 #GPIO helper
@@ -93,4 +99,43 @@ def set_led(pin, status):
 	"""
 	log.info("HTTP /set_led/%i/%s" %(pin, status))
 	leds.set_led(pin, status)
+	return 'OK'
+
+#MOTOR helper
+@app.route('/config_motor/<string:motor>/<int:pin1>/<int:pin2>', methods=['GET'])
+def config_motor(motor, pin1, pin2):
+	"""
+	A HTTP config_motor request is sent by Scratch when the 'Collega Motore CC' block is used
+	"""
+	log.info("HTTP /config_motor/%s/%i/%i" %(motor, pin1, pin2))
+	motors.config_motor(motor, pin1, pin2)
+	log.debug(motors.motors)
+	return 'OK'
+
+@app.route('/start_motor_wait/<int:id>/<string:motor>/<int:seconds>/<string:direction>', methods=['GET'])
+def start_motor_wait(id, motor, seconds, direction):
+	"""
+	A HTTP start_motor_wait request is sent by Scratch when the 'Attiva Motore per n secondi' block is used
+	"""
+	log.info("HTTP /start_motor_wait/%s/%i%s" %(motor, seconds, direction))
+	motors.start_motor_wait(motor, seconds, direction)
+	return 'OK'
+
+@app.route('/start_motor/<string:motor>/<string:direction>', methods=['GET'])
+def start_motor(motor, direction):
+	"""
+	A HTTP start_motor request is sent by Scratch when the 'Attiva Motore' block is used
+	"""
+	log.info("HTTP /start_motor/%s/%s" %(motor, direction))
+	motors.start_motor(motor, direction)
+	return 'OK'
+
+@app.route('/stop_motor/<string:motor>', methods=['GET'])
+def stop_motor(motor):
+	"""
+	A HTTP stop_motor request is sent by Scratch when the 'Ferma Motore' block is used
+	"""
+	log.info("HTTP /stop_motor/%s" %motor)
+	motors.stop_motor(motor)
+
 	return 'OK'
